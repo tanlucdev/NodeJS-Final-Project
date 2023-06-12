@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css    ">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <style>
+        p.item {
+            padding: 16px;
+            text-align: center;
+            border-radius: 8px;
+            color: white;
+            background-color: green;
+        }
+
+        .bg-blur {
+            background-color: rgb(247, 243, 243);
+        }
+
+        #header__login {
+            margin: 12px 0 12px 0;
+        }
+
+        .bg-form {
+            background-color: rgb(255, 255, 255) !important;
+        }
+
+        .mb-0 {
+            margin-bottom: 0 !important;
+        }
+    </style>
+</head>
+
+<body class="bg-blur">
+
+    <h3 id="header__login" class="text-center">Đăng nhập</h3>
+
+    <!-- buộc toàn bộ dòng và cột phải bỏ trong class container -->
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-5">
+                <div class="border p-3 rounded bg-form">
+                    <form id="form-login" method="POST" action="/account/login">
+                        <div class="form-group">
+                            <label for="user">Số điện thoại</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-user"></i>
+                                    </span>
+                                </div>
+                                <input name="phone" id="phone" type="text" class="form-control"
+                                    placeholder="Vui lòng nhập số điện thoại">
+                            </div>
+
+                        </div>
+                        <div class="form-group mb-0">
+                            <label for="pass">Mật khẩu</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-lock"></i>
+                                    </span>
+                                </div>
+                                <input id="password" name="password" type="password" class="form-control"
+                                    placeholder="Vui lòng nhập mật khẩu">
+                            </div>
+                        </div>
+
+
+                        <div id="alert-login" class="form-group" hidden>
+                            <div class="alert alert-danger alert-dismissible fade show">
+                                <span id="msg__login"></span>
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group d-flex flex-column">
+                            </p> <a href="/auth/google" class="btn btn-danger my-2 mb-0"><span
+                                    class="fa fa-google"></span> Đăng nhập với Google</a> 
+                            <a href="/auth/facebook" class="btn btn-primary my-2"><span
+                                    class="fa fa-facebook"></span> Đăng nhập với
+                                Facebook</a>
+                            <button id="btn_signIn" class="btn btn-success px-5" type="submit">Đăng nhập</button>
+                        </div>
+                        <div class="form-group">
+                            <p style="margin-bottom: 0px;">Bạn chưa có tài khoản? <a href="/register">Đăng ký ngay!</a></p> 
+                            <a style="padding-left: 0px;" href="/forgot-password">Quên mật khẩu?</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+<script>
+    const phone = document.getElementById("phone");
+    const password = document.getElementById("password");
+    const btn_signIn = document.getElementById("btn_signIn");
+    const msg__login = document.getElementById("msg__login");
+    const alertLogin = document.getElementById("alert-login");
+    const formLogin = document.getElementById("form-login");
+
+    console.log(password)
+
+    btn_signIn.addEventListener('click', (e) => {
+        if (phone.value.length < 5) {
+            formLogin.addEventListener('submit', function (event) {
+                event.preventDefault();
+            });
+            alertLogin.removeAttribute('hidden')
+            msg__login.innerText = "Vui lòng nhập vào số điện thoại"
+            phone.focus()
+        }
+        else if (password.value.length < 6) {
+            formLogin.addEventListener('submit', function (event) {
+                event.preventDefault();
+            });
+            alertLogin.removeAttribute('hidden')
+            msg__login.innerText = "Mật khẩu tối thiểu phải 6 kí tự"
+            password.focus()
+        }
+
+    })
+
+    phone.addEventListener('keypress', () => {
+        alertLogin.setAttribute('hidden', true)
+    })
+
+    password.addEventListener('keypress', () => {
+        alertLogin.setAttribute('hidden', true)
+    })
+
+
+</script>
+
+</html>

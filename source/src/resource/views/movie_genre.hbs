@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/css/movie_genre.css">
+    <title>Thể loại phim</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row cover">
+            <div class="col-md-1"></div>
+            <div class="col-md-7">
+                <div class="row">
+                    <div class="total-filter">
+                        <select name="" class="filter1">
+                            <option value="" disabled selected hidden>Thể loại</option>
+                            <option value="">Hành động</option>
+                            <option value="">Kinh dị</option>
+                            <option value="">Hài</option>
+                        </select>
+                        <select name="" class="filter1">
+                            <option value="" disabled selected hidden>Quốc gia</option>
+                            <option value="">Việt Nam</option>
+                            <option value="">Trung Quốc</option>
+                            <option value="">Mỹ</option>
+                        </select>
+                        <select name="" class="filter1">
+                            <option value="" disabled selected hidden>Năm</option>
+                            <option value="">2023</option>
+                            <option value="">2022</option>
+                            <option value="">2021</option>
+                        </select>
+                        <select name="" class="filter2">
+                            <option value="" disabled selected hidden>Đang chiếu/sắp chiếu</option>
+                            <option value="">Phim đang chiếu</option>
+                            <option value="">Phim sắp chiếu</option>
+                        </select>
+                        <select name="" class="filter2">
+                            <option value="" disabled selected hidden>Sắp xếp</option>
+                            <option value="">Mới nhất</option>
+                            <option value="">Xem nhiều nhất</option>
+                            <option value="">Đánh giá tốt nhất</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <a class="movie-blog" href="#">
+                        <h5>PHIM ĐIỆN ẢNH</h5>
+                    </a>
+                </div>
+                {{#each data}}
+                <div class="movie-item">
+                    <div class="row">
+                        <div class="movie-image col-md-3">
+                            <a href="/chi-tiet-phim/{{maphim}}">
+                                <img
+                                    src="/img/{{poster}}">
+                            </a>
+                        </div>
+                        <div class="movie-info col-md-8">
+                            <div class="movie-name">
+                                <a href="/chi-tiet-phim/{{maphim}}">
+                                    <h4>{{tenphim}}</h4>
+                                </a>
+                            </div>
+
+                            <div class="movie-description">
+                                <p>
+                                    Màn kết hợp bất đắc dĩ của Biệt Đội Rất Ổn - Phong, Khuê và Gia Đình Cục Súc nhằm
+                                    qua mắt “cô dâu, chú rể” tại khu resort sang chảnh hứa hẹn cực kỳ gay cấn, hồi hộp
+                                    nhưng không kém phần hài hước, xúc động.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+
+            <div class="col-md-3 right">
+                <div class="quick-buy-ticket">
+                    <h4>MUA VÉ NHANH</h4>
+                </div>
+                <div class="select-all">
+                    <select name="" id="" class="select">
+                        <option value="" disabled selected hidden>Chọn phim</option>
+                        <option value="">Tây du ký</option>
+                        <option value="">Đi tìm nemo</option>
+                        <option value="">Doraemon</option>
+                    </select>
+                    <select name="" id="" class="select">
+                        <option value="" disabled selected hidden>Chọn rạp</option>
+                        <option value="">Rạp 1</option>
+                        <option value="">Rạp 2</option>
+                        <option value="">Rạp 3</option>
+                    </select>
+                    <select name="" id="" class="select">
+                        <option value="" disabled selected hidden>Chọn ngày</option>
+                        <option value="">13/3/2023</option>
+                        <option value="">14/3/2023</option>
+                        <option value="">15/3/2023</option>
+                    </select>
+                    <select name="" id="" class="select">
+                        <option value="" disabled selected hidden>Chọn suất</option>
+                        <option value="">Suất 1</option>
+                        <option value="">Suất 2</option>
+                        <option value="">Suất 3</option>
+                    </select>
+                    <div class="buy-ticket-btn">
+                        <button class="buy-ticket">MUA VÉ</button>
+                    </div>
+                </div>
+                <div class="now-showing">
+                    <h4>PHIM ĐANG CHIẾU</h4>
+                </div>
+                {{#each data}}
+                <div class="row">
+                    <div class="col-md col-sm col-xs right-movie-item">
+                        <a href="#">
+                            <img class="movie-img"
+                                src="/img/{{poster}}" alt="">
+                            <div class="hidden-buy-ticket">
+                                <p><label class="age">C{{dotuoi}}</label></p>
+                                <button class="hidden-buy-ticket-btn">MUA VÉ</button>
+                            </div>
+                        </a>
+                        <div class="right-movie-name">
+                            <h5>{{tenphim}}</h5>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+                <div class="view-more">
+                    <button class="view-more-btn">XEM THÊM <label id="right-arrow">→</label></button>
+                </div>
+            </div>
+
+        </div>
+        <div class="pagi">
+            <div class="pagination">
+                <a href="#">&laquo;</a>
+                <a href="#">1</a>
+                <a href="#" class="active">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <a href="#">6</a>
+                <a href="#">&raquo;</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="cinema-title" href="#">
+                    <h5>LDBT CINEMA</h5>
+                </div>
+                <div class="cinema-description">
+                    <p>
+                        Bạn là một người mê phim, bạn thích khám phá bí mật phía sau hậu trường của các bom tấn, bạn
+                        thần tượng nhà làm phim nào đấy bởi tư duy vượt thời đại, phong cách quay phim đặc biệt và những
+                        câu
+                        chuyện đầy mới lạ, bạn ngưỡng mộ một ngôi sao bởi khả năng diễn xuất cực đỉnh… Thậm chí nếu bạn
+                        muốn tìm hiểu sâu hơn về điện ảnh, các trào lưu chủ nghĩa từng tạo tiếng vang trong lịch sử, sự
+                        ra đời của các thể loại và bản sắc riêng của từng nền điện ảnh đến từ các quốc gia khác
+                        nhau.<br><br>
+
+                        Chào mừng đến chuyên trang điện ảnh, nơi được xem như một thư viện với đầy đủ các thông tin về
+                        những bộ phim, đạo diễn, diễn viên dành cho người yêu phim. Tại đây bạn dễ dàng tìm hiểu được
+                        tiểu sử của vị đạo diễn yêu thích, có được thông tin bên lề của các bộ phim hay đang chiếu tại
+                        rạp. Ngoài ra nếu đam mê những tác phẩm kinh điển trong quá khứ, vẫn có những bài bình luận với
+                        hạng mục Phim Kinh Điển.<br><br>
+
+                        Đối với những ai có hứng thú tìm hiểu đời tư của các minh tinh hạng A, Galaxy Cinema cũng luôn
+                        cập nhật các tin tức nóng hổi từ họ. Bên cạnh đó còn bao gồm các bài phân tích mang tính chuyên
+                        môn, các chủ đề giúp nâng cao kiến thức điện ảnh cũng được giới thiệu qua loạt bài Ký Sự Điện
+                        Ảnh.<br><br>
+
+                        Galaxy Cinema – rạp chiếu được trang bị hệ thống âm thanh và hình ảnh hàng đầu Việt Nam, tự hào
+                        là Trạm Điện Ảnh sẵn sàng đưa bạn vào thế giới Phim Như Sống – Sống Như Phim, cùng những chuyến
+                        tàu với trải nghiệm thú vị tuyệt vời nhất trên màn ảnh.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
